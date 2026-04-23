@@ -13,23 +13,21 @@ import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.services.OrderServices;
 
 @RestController
-@RequestMapping (value = "/orders")
+@RequestMapping(value = "/orders")
 public class OrderResource {
-	
+
 	@Autowired
 	private OrderServices service;
-		
-	
+
 	@GetMapping
-	public ResponseEntity<List<Order>> findAll(){
+	public ResponseEntity<List<Order>> findAll() {
 		List<Order> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Order> findById(@PathVariable Long id){
+	public ResponseEntity<Order> findById(@PathVariable Long id) {
 		Order OrderFoundById = service.findById(id);
 		return ResponseEntity.ok().body(OrderFoundById);
 	}
-
 }
