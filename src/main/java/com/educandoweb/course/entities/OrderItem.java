@@ -15,7 +15,7 @@ import jakarta.persistence.Table;
 public class OrderItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK();
 	private Integer quantity;
@@ -39,7 +39,7 @@ public class OrderItem implements Serializable {
 	public void setOrder(Order order) {
 		id.setOrder(order);
 	}
-	
+
 	@JsonIgnore
 	public Product getProduct() {
 		return id.getProduct();
@@ -63,6 +63,10 @@ public class OrderItem implements Serializable {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public Double getSubTotal() {
+		return price * quantity;
 	}
 
 	@Override
